@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — LeadNotio</title>
+  <meta name="description" content="Get in touch with the LeadNotio team. We're here to help with any questions about our Shopify CRM app." />
+  <link rel="icon" href="icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="icon.png" alt="LeadNotio" />
+    <span>LeadNotio</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="https://apps.shopify.com/leadnotio" class="nav-cta">Install Free →</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <h1>Get in Touch</h1>
+  <p>We typically respond within 1 business day.</p>
+</div>
+
+<div class="contact-grid">
+  <!-- INFO SIDE -->
+  <div class="contact-info">
+    <h2>We're here to help</h2>
+    <p>Whether you have a question about features, billing, a technical issue, or anything else — our team is ready to answer.</p>
+
+    <div class="contact-detail">
+      <div class="contact-detail-icon">📧</div>
+      <div>
+        <strong>Email</strong><br />
+        <a href="mailto:support@leadnotio.com" style="color: var(--green); text-decoration: none;">support@leadnotio.com</a>
+      </div>
+    </div>
+
+    <div class="contact-detail">
+      <div class="contact-detail-icon">⏰</div>
+      <div>
+        <strong>Response Time</strong><br />
+        Within 1 business day
+      </div>
+    </div>
+
+    <div class="contact-detail">
+      <div class="contact-detail-icon">📖</div>
+      <div>
+        <strong>Quick Answers</strong><br />
+        Check our <a href="faq.html" style="color: var(--green); text-decoration: none;">FAQ page</a> for common questions
+      </div>
+    </div>
+
+    <div style="margin-top: 2.5rem; padding: 1.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 12px;">
+      <div style="font-weight: 700; margin-bottom: 0.5rem;">🛍️ For billing issues</div>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">All billing for LeadNotio is handled through Shopify. For refunds or billing disputes, you can also contact Shopify Partner Support directly through your Shopify admin.</p>
+    </div>
+  </div>
+
+  <!-- FORM SIDE -->
+  <div>
+    <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name *</label>
+          <input type="text" id="firstName" name="firstName" required placeholder="Jane" />
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name *</label>
+          <input type="text" id="lastName" name="lastName" required placeholder="Doe" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required placeholder="jane@yourstore.com" />
+      </div>
+
+      <div class="form-group">
+        <label for="store">Shopify Store URL</label>
+        <input type="text" id="store" name="store" placeholder="yourstore.myshopify.com" />
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Subject *</label>
+        <select id="subject" name="subject" required>
+          <option value="" disabled selected>Select a topic...</option>
+          <option value="general">General Question</option>
+          <option value="technical">Technical Issue / Bug</option>
+          <option value="billing">Billing & Subscription</option>
+          <option value="feature">Feature Request</option>
+          <option value="privacy">Privacy / Data Request</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message *</label>
+        <textarea id="message" name="message" required placeholder="Tell us how we can help you..."></textarea>
+      </div>
+
+      <button type="submit" class="form-submit">Send Message →</button>
+
+      <div class="success-msg" id="successMsg">
+        ✅ Message sent! We'll get back to you within 1 business day.
+      </div>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">
+      <img src="icon.png" alt="LeadNotio" style="width:28px;height:28px;border-radius:6px;" />
+      <span>LeadNotio</span>
+    </a>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="faq.html">FAQ</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+    <div class="footer-copy">© 2025 LeadNotio. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  // In production, replace this with a real form submission (Formspree, EmailJS, etc.)
+  const form = document.getElementById('contactForm');
+  const successMsg = document.getElementById('successMsg');
+  form.querySelector('.form-submit').style.display = 'none';
+  successMsg.style.display = 'block';
+  form.reset();
+}
+</script>
+
+</body>
+</html>
