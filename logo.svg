@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80" fill="none">
+  <defs>
+    <linearGradient id="icon-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="icon-grad2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon: Two overlapping angled shapes forming abstract N -->
+  <!-- Back shape (darker, purple-blue) -->
+  <path d="M8 68 L8 12 L20 12 L20 44 L40 12 L52 12 L52 68 L40 68 L40 36 L20 68 Z" fill="url(#icon-grad)" opacity="0.85"/>
+  <!-- Front shape (lighter blue, offset) -->
+  <path d="M18 72 L18 16 L30 16 L30 48 L50 16 L62 16 L62 72 L50 72 L50 40 L30 72 Z" fill="url(#icon-grad2)"/>
+
+  <!-- Text: LeadNotio -->
+  <text x="74" y="55" font-family="Inter, -apple-system, sans-serif" font-size="42" font-weight="800" letter-spacing="-1">
+    <tspan fill="#ffffff">Lead</tspan><tspan fill="#3b82f6">Notio</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="76" y="72" font-family="Inter, -apple-system, sans-serif" font-size="13" font-weight="500" fill="#64748b" letter-spacing="0.5">Made for Shopify</text>
+</svg>

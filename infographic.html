@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LeadNotio Infographic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .infographic {
+      width: 900px;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+    }
+
+    /* HEADER */
+    .ig-header {
+      background: linear-gradient(135deg, rgba(22,163,74,0.15), rgba(37,99,235,0.15));
+      border-bottom: 1px solid #334155;
+      padding: 2.5rem 3rem;
+      text-align: center;
+      position: relative;
+    }
+    .ig-header::before {
+      content: '';
+      position: absolute;
+      top: -100px; left: 50%; transform: translateX(-50%);
+      width: 500px; height: 300px;
+      background: radial-gradient(circle, rgba(34,197,94,0.15), transparent 70%);
+      pointer-events: none;
+    }
+    .ig-logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.2rem;
+    }
+    .logo-lead { color: #fff; }
+    .logo-notio {
+      background: linear-gradient(135deg, #22c55e, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .ig-header h1 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #f8fafc;
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+    }
+    .ig-header h1 span {
+      background: linear-gradient(135deg, #22c55e, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .ig-header p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+
+    /* STATS ROW */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid #334155;
+    }
+    .stat-block {
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border-right: 1px solid #334155;
+      position: relative;
+    }
+    .stat-block:last-child { border-right: none; }
+    .stat-block::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 40px; height: 3px;
+      border-radius: 2px;
+    }
+    .stat-block:nth-child(1)::after { background: #ef4444; }
+    .stat-block:nth-child(2)::after { background: #22c55e; }
+    .stat-block:nth-child(3)::after { background: #3b82f6; }
+    .stat-block:nth-child(4)::after { background: #a855f7; }
+
+    .stat-num {
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #22c55e, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label {
+      font-size: 0.78rem;
+      color: #94a3b8;
+      line-height: 1.4;
+    }
+
+    /* MIDDLE SECTION */
+    .ig-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid #334155;
+    }
+
+    /* PROBLEM COLUMN */
+    .problem-col {
+      padding: 2rem 2.5rem;
+      border-right: 1px solid #334155;
+    }
+    .col-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .col-label.red { color: #f87171; }
+    .col-label.green { color: #4ade80; }
+    .col-label .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .col-label.red .dot { background: #ef4444; }
+    .col-label.green .dot { background: #22c55e; }
+
+    .problem-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 1.1rem;
+    }
+    .problem-icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: rgba(239,68,68,0.12);
+      border: 1px solid rgba(239,68,68,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .solution-icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: rgba(34,197,94,0.12);
+      border: 1px solid rgba(34,197,94,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .item-text strong {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 0.2rem;
+    }
+    .item-text span {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      line-height: 1.4;
+    }
+
+    /* FUNNEL */
+    .funnel-section {
+      padding: 2rem 2.5rem;
+    }
+    .funnel-col-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #3b82f6;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .funnel-col-label .dot { width: 8px; height: 8px; border-radius: 50%; background: #3b82f6; }
+
+    .funnel-step {
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+    .funnel-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.2rem;
+    }
+    .funnel-label {
+      font-size: 0.76rem;
+      color: #94a3b8;
+      width: 160px;
+      flex-shrink: 0;
+      text-align: right;
+      line-height: 1.3;
+    }
+    .funnel-bar-wrap {
+      flex: 1;
+      height: 32px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .funnel-bar {
+      height: 100%;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 0.6rem;
+    }
+    .funnel-pct {
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+    .bar-1 { background: rgba(59,130,246,0.35); width: 100%; }
+    .bar-1 .funnel-pct { color: #93c5fd; }
+    .bar-2 { background: rgba(239,68,68,0.35); width: 70%; }
+    .bar-2 .funnel-pct { color: #fca5a5; }
+    .bar-3 { background: rgba(245,158,11,0.35); width: 18%; }
+    .bar-3 .funnel-pct { color: #fcd34d; }
+    .bar-4 { background: rgba(34,197,94,0.35); width: 35%; }
+    .bar-4 .funnel-pct { color: #86efac; }
+
+    .funnel-arrow {
+      text-align: right;
+      padding-right: 0;
+      color: #475569;
+      font-size: 0.72rem;
+      line-height: 1;
+      margin-bottom: 0.2rem;
+      padding-left: 166px;
+    }
+
+    /* HOW IT WORKS */
+    .how-section {
+      padding: 2rem 3rem;
+      border-bottom: 1px solid #334155;
+    }
+    .how-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #22c55e;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .how-label .dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; }
+    .steps-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      align-items: start;
+    }
+    .step-card {
+      text-align: center;
+      position: relative;
+    }
+    .step-card::after {
+      content: '→';
+      position: absolute;
+      right: -0.6rem;
+      top: 1rem;
+      color: #475569;
+      font-size: 1rem;
+    }
+    .step-card:last-child::after { display: none; }
+    .step-num-circle {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #16a34a, #2563eb);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0 auto 0.6rem;
+      box-shadow: 0 4px 16px rgba(34,197,94,0.3);
+    }
+    .step-title { font-size: 0.82rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.3rem; }
+    .step-desc { font-size: 0.72rem; color: #94a3b8; line-height: 1.4; }
+
+    /* SOCIAL PROOF ROW */
+    .proof-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid #334155;
+    }
+    .proof-card {
+      padding: 1.5rem 1.8rem;
+      border-right: 1px solid #334155;
+    }
+    .proof-card:last-child { border-right: none; }
+    .proof-stars { color: #f59e0b; font-size: 0.8rem; margin-bottom: 0.5rem; }
+    .proof-quote {
+      font-size: 0.78rem;
+      color: #94a3b8;
+      line-height: 1.5;
+      font-style: italic;
+      margin-bottom: 0.75rem;
+    }
+    .proof-name { font-size: 0.8rem; font-weight: 700; color: #f8fafc; }
+    .proof-role { font-size: 0.72rem; color: #64748b; }
+
+    /* FOOTER */
+    .ig-footer {
+      padding: 1.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(30,41,59,0.5);
+    }
+    .ig-footer-logo {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .ig-footer p {
+      font-size: 0.78rem;
+      color: #475569;
+    }
+    .ig-footer-cta {
+      background: linear-gradient(135deg, #16a34a, #2563eb);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.5rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+<div class="infographic">
+
+  <!-- HEADER -->
+  <div class="ig-header">
+    <div class="ig-logo"><span class="logo-lead">Lead</span><span class="logo-notio">Notio</span></div>
+    <h1>The Abandoned Cart Problem<br /><span>Is Costing You More Than You Think</span></h1>
+    <p>Data-backed reasons why personal outreach beats automation every time</p>
+  </div>
+
+  <!-- STATS ROW -->
+  <div class="stats-row">
+    <div class="stat-block">
+      <div class="stat-num">70%</div>
+      <div class="stat-label">of Shopify carts are abandoned before checkout</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">5–9×</div>
+      <div class="stat-label">cheaper to retain a customer than acquire a new one</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">67%</div>
+      <div class="stat-label">more spent by repeat customers vs. first-time buyers</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">+29%</div>
+      <div class="stat-label">average revenue lift from personal cart recovery</div>
+    </div>
+  </div>
+
+  <!-- MIDDLE: PROBLEM + FUNNEL -->
+  <div class="ig-body">
+
+    <!-- LEFT: PROBLEM vs SOLUTION -->
+    <div class="problem-col">
+      <div class="col-label red"><span class="dot"></span>Without LeadNotio</div>
+      <div class="problem-item">
+        <div class="problem-icon">🛒</div>
+        <div class="item-text">
+          <strong>Abandoned carts go unnoticed</strong>
+          <span>No visibility into who left and what they left behind</span>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-icon">📉</div>
+        <div class="item-text">
+          <strong>Revenue walks out the door</strong>
+          <span>Stores lose an average of 70% of potential revenue to cart abandonment</span>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-icon">🔁</div>
+        <div class="item-text">
+          <strong>Repeat buyers get ignored</strong>
+          <span>Your best customers never get a personal follow-up</span>
+        </div>
+      </div>
+
+      <div class="col-label green" style="margin-top:1.5rem"><span class="dot"></span>With LeadNotio</div>
+      <div class="problem-item">
+        <div class="solution-icon">✅</div>
+        <div class="item-text">
+          <strong>Instant abandoned cart view</strong>
+          <span>See every cart, every value, every contact — inside Shopify</span>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="solution-icon">📞</div>
+        <div class="item-text">
+          <strong>One-click personal outreach</strong>
+          <span>Call, email, or send a draft order in seconds</span>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="solution-icon">💰</div>
+        <div class="item-text">
+          <strong>Revenue recovered, tracked</strong>
+          <span>+29% average revenue increase from follow-up</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: FUNNEL -->
+    <div class="funnel-section">
+      <div class="funnel-col-label"><span class="dot"></span>The Shopify Cart Recovery Funnel</div>
+
+      <div class="funnel-row">
+        <div class="funnel-label">Visitors who add to cart</div>
+        <div class="funnel-bar-wrap"><div class="funnel-bar bar-1"><span class="funnel-pct">100%</span></div></div>
+      </div>
+      <div class="funnel-arrow">↓ 70% abandon before checkout</div>
+      <div class="funnel-row">
+        <div class="funnel-label">Carts abandoned</div>
+        <div class="funnel-bar-wrap"><div class="funnel-bar bar-2"><span class="funnel-pct">70%</span></div></div>
+      </div>
+      <div class="funnel-arrow">↓ email automation recovers ~5%</div>
+      <div class="funnel-row">
+        <div class="funnel-label">Recovered by automation</div>
+        <div class="funnel-bar-wrap"><div class="funnel-bar bar-3"><span class="funnel-pct">~5%</span></div></div>
+      </div>
+      <div class="funnel-arrow">↓ personal outreach adds up to +29% more</div>
+      <div class="funnel-row">
+        <div class="funnel-label">Recovered with personal outreach</div>
+        <div class="funnel-bar-wrap"><div class="funnel-bar bar-4"><span class="funnel-pct">+29%</span></div></div>
+      </div>
+
+      <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); border-radius: 10px;">
+        <div style="font-size: 0.75rem; color: #4ade80; font-weight: 700; margin-bottom: 0.3rem;">💡 The Opportunity</div>
+        <div style="font-size: 0.8rem; color: #94a3b8; line-height: 1.5;">A store doing <strong style="color:#f8fafc">$50k/month</strong> is leaving up to <strong style="color:#4ade80">$35,000</strong> on the table every month in abandoned carts — most of which could be recovered with a single phone call or personalized email.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="how-section">
+    <div class="how-label"><span class="dot"></span>How LeadNotio Recovers Your Revenue</div>
+    <div class="steps-row">
+      <div class="step-card">
+        <div class="step-num-circle">1</div>
+        <div class="step-title">See Who Left</div>
+        <div class="step-desc">Abandoned carts & repeat buyers flagged in one Shopify view</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num-circle">2</div>
+        <div class="step-title">Reach Out</div>
+        <div class="step-desc">Call, email, or send a draft order — one click, no tab switching</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num-circle">3</div>
+        <div class="step-title">Log & Schedule</div>
+        <div class="step-desc">Note the outcome, assign to a rep, set a follow-up — 30 seconds</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num-circle">4</div>
+        <div class="step-title">Revenue Back</div>
+        <div class="step-desc">Track recovered carts & repeat sales on your dashboard</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOCIAL PROOF -->
+  <div class="proof-row">
+    <div class="proof-card">
+      <div class="proof-stars">★★★★★</div>
+      <div class="proof-quote">"We recovered 11 carts in the first week just by calling customers. That's $2,400 we would have lost."</div>
+      <div class="proof-name">Carlos M.</div>
+      <div class="proof-role">Auto detailing supplies store</div>
+    </div>
+    <div class="proof-card">
+      <div class="proof-stars">★★★★★</div>
+      <div class="proof-quote">"I had no idea how many of our best customers had abandoned carts sitting there. LeadNotio made it impossible to ignore."</div>
+      <div class="proof-name">Sarah K.</div>
+      <div class="proof-role">Skincare & beauty brand</div>
+    </div>
+    <div class="proof-card">
+      <div class="proof-stars">★★★★★</div>
+      <div class="proof-quote">"Our team splits the abandoned cart list every morning, makes calls, logs notes. It's the first thing we open."</div>
+      <div class="proof-name">James T.</div>
+      <div class="proof-role">Wholesale equipment store</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="ig-footer">
+    <div class="ig-footer-logo"><span class="logo-lead">Lead</span><span class="logo-notio">Notio</span></div>
+    <p>leadnotio.com · Built for Shopify Stores · Free to Install</p>
+    <a href="https://apps.shopify.com/leadnotio" class="ig-footer-cta">Install Free →</a>
+  </div>
+
+</div>
+</body>
+</html>
