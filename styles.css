@@ -663,7 +663,7 @@ footer {
 }
 
 /* HERO INNER */
-.hero-inner { max-width: 860px; margin: 0 auto; }
+.hero-inner { max-width: 1000px; margin: 0 auto; }
 
 /* HERO MOCKUP (full-width below hero text) */
 .hero-mockup {
