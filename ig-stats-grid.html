@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LeadNotio — Stats Grid Instagram</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #dde4f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .canvas {
+      width: 1080px;
+      height: 1350px;
+      background: #f7f9ff;
+      border-radius: 0;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Background decorations */
+    .bg-blob-1 {
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(95,57,246,0.08), transparent 70%);
+      pointer-events: none;
+    }
+    .bg-blob-2 {
+      position: absolute;
+      bottom: 100px; left: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(43,167,251,0.08), transparent 70%);
+      pointer-events: none;
+    }
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(95,57,246,0.04) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(95,57,246,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* HEADER */
+    .header {
+      padding: 64px 80px 48px;
+      position: relative;
+      z-index: 1;
+    }
+    .logo-wrap {
+      margin-bottom: 36px;
+    }
+    .logo-wrap img {
+      height: 44px;
+    }
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #5f39f6;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 3px;
+      background: linear-gradient(90deg, #5f39f6, #2ba7fb);
+      border-radius: 2px;
+    }
+    .header h1 {
+      font-size: 62px;
+      font-weight: 900;
+      line-height: 1.05;
+      color: #0f172a;
+      letter-spacing: -0.03em;
+    }
+    .header h1 .grad {
+      background: linear-gradient(135deg, #5f39f6, #2ba7fb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .header-sub {
+      margin-top: 18px;
+      font-size: 20px;
+      color: #64748b;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    /* DIVIDER */
+    .divider {
+      height: 2px;
+      background: linear-gradient(90deg, #5f39f6, #2ba7fb, transparent);
+      margin: 0 80px;
+      border-radius: 2px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* STATS GRID */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      padding: 48px 80px;
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+    .stat-card {
+      background: #ffffff;
+      border: 1.5px solid rgba(95,57,246,0.12);
+      border-radius: 24px;
+      padding: 44px 40px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(95,57,246,0.06);
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+    }
+    .stat-card:nth-child(1)::before { background: linear-gradient(90deg, #ef4444, #f97316); }
+    .stat-card:nth-child(2)::before { background: linear-gradient(90deg, #5f39f6, #2ba7fb); }
+    .stat-card:nth-child(3)::before { background: linear-gradient(90deg, #5f39f6, #2ba7fb); }
+    .stat-card:nth-child(4)::before { background: linear-gradient(90deg, #10b981, #2ba7fb); }
+
+    .stat-card .icon {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .stat-card .number {
+      font-size: 88px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 12px;
+    }
+    .stat-card:nth-child(1) .number { color: #ef4444; }
+    .stat-card:nth-child(2) .number {
+      background: linear-gradient(135deg, #5f39f6, #2ba7fb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-card:nth-child(3) .number {
+      background: linear-gradient(135deg, #5f39f6, #2ba7fb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-card:nth-child(4) .number { color: #10b981; }
+
+    .stat-card .label {
+      font-size: 18px;
+      font-weight: 600;
+      color: #0f172a;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .stat-card .sublabel {
+      font-size: 14px;
+      color: #64748b;
+      line-height: 1.5;
+    }
+
+    /* FOOTER */
+    .footer {
+      padding: 36px 80px 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+      border-top: 1.5px solid rgba(95,57,246,0.1);
+      background: rgba(255,255,255,0.7);
+    }
+    .footer-text {
+      font-size: 16px;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+    .footer-cta {
+      background: linear-gradient(135deg, #5f39f6, #2ba7fb);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 800;
+      padding: 16px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(95,57,246,0.35);
+      letter-spacing: -0.01em;
+    }
+  </style>
+</head>
+<body>
+<div class="canvas">
+  <div class="bg-blob-1"></div>
+  <div class="bg-blob-2"></div>
+  <div class="bg-grid"></div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-wrap">
+      <img src="logo-new.svg" alt="LeadNotio" />
+    </div>
+    <div class="eyebrow">Shopify Revenue Stats</div>
+    <h1>The Numbers<br />Don't <span class="grad">Lie.</span></h1>
+    <p class="header-sub">What every Shopify store owner needs to know<br />about abandoned carts and repeat customers.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- STATS GRID -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="icon">🛒</div>
+      <div class="number">70%</div>
+      <div class="label">of carts are abandoned</div>
+      <div class="sublabel">Before customers ever reach checkout</div>
+    </div>
+    <div class="stat-card">
+      <div class="icon">💸</div>
+      <div class="number">5–9×</div>
+      <div class="label">cheaper to retain</div>
+      <div class="sublabel">Than acquiring a brand-new customer</div>
+    </div>
+    <div class="stat-card">
+      <div class="icon">⭐</div>
+      <div class="number">67%</div>
+      <div class="label">more from repeat buyers</div>
+      <div class="sublabel">vs. first-time customers on average</div>
+    </div>
+    <div class="stat-card">
+      <div class="icon">📈</div>
+      <div class="number">+29%</div>
+      <div class="label">revenue from follow-up</div>
+      <div class="sublabel">When you reach out personally after abandonment</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-text">leadnotio.com · Free on Shopify App Store</div>
+    <a href="https://apps.shopify.com/leadnotio" class="footer-cta">Install Free →</a>
+  </div>
+</div>
+</body>
+</html>
