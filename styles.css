@@ -43,20 +43,14 @@ nav {
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
   text-decoration: none;
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--text);
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
-.nav-logo img {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-}
-
-.nav-logo span { background: linear-gradient(135deg, var(--green), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.logo-lead { color: #ffffff; }
+.logo-notio { background: linear-gradient(135deg, var(--green), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
 .nav-links {
   display: flex;
@@ -480,14 +474,11 @@ footer {
 .footer-logo {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
   text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text);
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
-
-.footer-logo span { background: linear-gradient(135deg, var(--green), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
 .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
 
